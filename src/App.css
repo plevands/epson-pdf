@@ -1,0 +1,511 @@
+/* App Layout */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.app-header {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.app-header p {
+  margin: 0;
+  color: #888;
+}
+
+.app-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 350px 1fr 350px;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.left-panel,
+.center-panel,
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-footer p {
+  margin: 0;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.app-footer a {
+  color: #667eea;
+}
+
+/* Cards / Sections */
+.printer-config,
+.pdf-uploader,
+.pdf-preview,
+.print-controls {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+/* SDK Status Indicator */
+.sdk-status {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.sdk-status.sdk-loaded {
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: #22c55e;
+}
+
+.sdk-status.sdk-error {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+}
+
+.printer-config h3,
+.pdf-uploader h3,
+.pdf-preview h3,
+.print-controls h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+/* Printer Config */
+.config-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  color: #aaa;
+}
+
+.form-group input {
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 0.875rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.btn-save {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.config-help {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.config-help p {
+  margin: 0;
+}
+
+/* PDF Uploader */
+.drop-zone {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.drop-zone:hover,
+.drop-zone.dragging {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.drop-zone.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.drop-message {
+  color: #888;
+}
+
+.drop-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.drop-hint {
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+}
+
+.file-icon {
+  font-size: 2rem;
+}
+
+.file-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.file-name {
+  color: #fff;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.file-size {
+  color: #888;
+  font-size: 0.875rem;
+}
+
+.btn-clear {
+  background: rgba(255, 100, 100, 0.2);
+  border: none;
+  color: #ff6b6b;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.btn-clear:hover {
+  background: rgba(255, 100, 100, 0.4);
+}
+
+/* PDF Preview */
+.preview-loading,
+.preview-error {
+  text-align: center;
+  padding: 2rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.preview-error {
+  color: #ff6b6b;
+}
+
+.preview-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.preview-navigation button {
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.preview-navigation button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #667eea;
+}
+
+.preview-navigation button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.preview-container {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.preview-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.preview-info {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+/* Print Controls */
+.control-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.control-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.control-section h4 {
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.btn-test,
+.btn-test-print {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-test:hover:not(:disabled),
+.btn-test-print:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #667eea;
+}
+
+.btn-test:disabled,
+.btn-test-print:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #667eea;
+}
+
+.page-selection {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.page-selection p {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.875rem;
+  color: #aaa;
+}
+
+.page-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.page-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.page-btn:hover {
+  border-color: #667eea;
+}
+
+.page-btn.selected {
+  background: #667eea;
+  border-color: #667eea;
+}
+
+.text-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 0.875rem;
+  box-sizing: border-box;
+  margin-bottom: 0.75rem;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.btn-print {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-print:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(56, 239, 125, 0.4);
+}
+
+.btn-print:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.print-result {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.print-result.success {
+  background: rgba(56, 239, 125, 0.1);
+  border: 1px solid rgba(56, 239, 125, 0.3);
+  color: #38ef7d;
+}
+
+.print-result.error {
+  background: rgba(255, 100, 100, 0.1);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  color: #ff6b6b;
+}
+
+.print-result p {
+  margin: 0;
+}
+
+.result-code {
+  margin-top: 0.5rem !important;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .app-main {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .app-main {
+    padding: 1rem;
+    gap: 1rem;
+  }
+}

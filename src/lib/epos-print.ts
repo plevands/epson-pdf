@@ -66,9 +66,10 @@ export class EposPrintService {
   constructor(config: EpsonPrinterConfig, options: PrintOptions = {}) {
     this.config = {
       printerIP: config.printerIP,
-      printerPort: config.printerPort ?? 80,
+      printerPort: config.printerPort ?? (config.useHttps ? 443 : 80),
       deviceId: config.deviceId ?? 'local_printer',
       timeout: config.timeout ?? 60000,
+      useHttps: config.useHttps ?? false,
     };
     this.printOptions = {
       halftone: options.halftone ?? 1,
@@ -110,8 +111,9 @@ export class EposPrintService {
    * Get the printer URL for ePOS Print
    */
   private getPrinterUrl(): string {
-    const { printerIP, printerPort, deviceId, timeout } = this.config;
-    return `http://${printerIP}:${printerPort}/cgi-bin/epos/service.cgi?devid=${deviceId}&timeout=${timeout}`;
+    const { printerIP, printerPort, deviceId, timeout, useHttps } = this.config;
+    const protocol = useHttps ? 'https' : 'http';
+    return `${protocol}://${printerIP}:${printerPort}/cgi-bin/epos/service.cgi?devid=${deviceId}&timeout=${timeout}`;
   }
 
   /**

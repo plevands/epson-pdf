@@ -14,6 +14,8 @@ export interface EpsonPrinterConfig {
   printerPort?: number;
   deviceId?: string;
   timeout?: number;
+  /** Use HTTPS instead of HTTP (default: false) */
+  useHttps?: boolean;
 }
 
 // Print Result

@@ -19,7 +19,6 @@ Library for Epson thermal printer integration with PDF support and React hooks.
 - 🔄 **Lazy loading** - SDK loads automatically on first use
 - 📄 **PDF Processing** - Intelligent margin trimming and scaling for thermal printers
 - ⚛️ **React Hooks** - Modern hooks-based API (`useEpsonPrinter`, `usePrinterConfig`, `usePdfProcessor`)
-- 🎨 **Optional UI Components** - Ready-to-use React components for quick integration
 - 🔧 **Fully Configurable** - Control PDF processing, print quality, paper width, and more
 - 📦 **TypeScript First** - Complete type definitions included
 - 🎯 **Zero Config** - Works out of the box with sensible defaults
@@ -220,36 +219,6 @@ function PdfPrinter() {
   };
 
   return <div>{/* Your UI */}</div>;
-}
-```
-
-### Using Pre-built Components
-
-```typescript
-import { 
-  PdfUploader,
-  PdfPreview,
-  PrinterConfig,
-  PrintControls 
-} from '@plevands/epson-thermal-printer/components';
-
-function App() {
-  const [file, setFile] = useState<File | null>(null);
-  const [pages, setPages] = useState([]);
-
-  return (
-    <div>
-      <PrinterConfig onConfigChange={(config) => console.log(config)} />
-      <PdfUploader onFileSelect={setFile} />
-      <PdfPreview 
-        file={file} 
-        onPagesLoaded={setPages}
-        paperWidth={576}
-        pdfProcessing={{ enabled: true }}
-      />
-      <PrintControls pages={pages} />
-    </div>
-  );
 }
 ```
 
@@ -454,8 +423,8 @@ npm run dev
 # Open in browser: http://localhost:5123
 ```
 
-The demo app provides:
-- 🖨️ Printer configuration panel
+The demo app demonstrates:
+- 🖨️ Printer configuration
 - 📄 PDF file upload and preview
 - 🎨 Real-time PDF processing visualization
 - ⚙️ Print controls with customizable options

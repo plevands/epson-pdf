@@ -11,13 +11,9 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    },
-    "./components": {
-      "types": "./dist/components.d.ts",
-      "import": "./dist/components.js",
-      "require": "./dist/components.cjs"
     }
   },
+  "sideEffects": false,
   "files": [
     "dist/*.js",
     "dist/*.cjs",

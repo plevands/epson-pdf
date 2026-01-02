@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     dts({
       include: ['src'],
-      exclude: ['src/main.tsx', 'src/App.tsx', 'src/App.css'],
+      exclude: ['src/main.tsx', 'src/App.tsx', 'src/App.css', 'src/components.ts', 'src/components'],
       insertTypesEntry: true,
       tsconfigPath: './tsconfig.app.json',
     }),
@@ -18,7 +18,6 @@ export default defineConfig({
     lib: {
       entry: {
         index: resolve(__dirname, 'src/index.ts'),
-        components: resolve(__dirname, 'src/components.ts'),
       },
       name: 'EpsonPrinter',
       formats: ['es', 'cjs'],

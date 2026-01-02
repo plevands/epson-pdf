@@ -16,6 +16,13 @@
 .app-header h1 {
   margin: 0 0 0.5rem 0;
   font-size: 2rem;
+}
+
+.header-icon {
+  -webkit-text-fill-color: initial;
+}
+
+.header-title {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -27,16 +34,25 @@
   color: #888;
 }
 
+.app-header code {
+  background: rgba(102, 126, 234, 0.2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #a8b4ff;
+}
+
 .app-main {
   flex: 1;
   display: grid;
-  grid-template-columns: 350px 1fr 350px;
+  grid-template-columns: minmax(320px, 400px) minmax(400px, 1fr) minmax(320px, 400px);
   gap: 1.5rem;
   padding: 1.5rem;
   max-width: 1600px;
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
+  align-items: start;
 }
 
 .left-panel,
@@ -69,10 +85,12 @@
 .pdf-uploader,
 .pdf-preview,
 .print-controls {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 12px;
   padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* SDK Status Indicator */
@@ -232,22 +250,68 @@
 }
 
 .btn-clear {
-  background: rgba(255, 100, 100, 0.2);
-  border: none;
-  color: #ff6b6b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  min-width: 32px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background 0.2s;
+  font-weight: 600;
+  transition: all 0.2s;
+  padding: 0;
+  line-height: 1;
 }
 
 .btn-clear:hover {
-  background: rgba(255, 100, 100, 0.4);
+  background: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #f87171;
 }
 
 /* PDF Preview */
+.pdf-preview-empty {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  border: 2px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.placeholder-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.preview-placeholder p {
+  margin: 0;
+  color: #aaa;
+  font-size: 1rem;
+}
+
+.placeholder-hint {
+  margin-top: 0.5rem;
+  color: #666;
+  font-size: 0.85rem;
+}
+
 .preview-loading,
 .preview-error {
   text-align: center;
@@ -381,6 +445,45 @@
   accent-color: #667eea;
 }
 
+/* Select and Range inputs */
+.select-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: #ccc;
+  font-size: 0.875rem;
+}
+
+.select-input {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.select-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.select-input option {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.range-input {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  accent-color: #667eea;
+  cursor: pointer;
+}
+
 .page-selection {
   margin-top: 1rem;
   padding: 1rem;
@@ -492,10 +595,45 @@
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
+  .app-main {
+    grid-template-columns: minmax(300px, 380px) 1fr;
+    max-width: 1000px;
+  }
+  
+  .right-panel {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-main {
+    grid-template-columns: 1fr 1fr;
+    max-width: 800px;
+  }
+  
+  .center-panel {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+  
+  .right-panel {
+    grid-column: auto;
+    order: 2;
+  }
+}
+
+@media (max-width: 700px) {
   .app-main {
     grid-template-columns: 1fr;
-    max-width: 600px;
+    max-width: 500px;
+  }
+  
+  .left-panel,
+  .center-panel,
+  .right-panel {
+    grid-column: auto;
+    order: unset;
   }
 }
 
@@ -507,5 +645,183 @@
   .app-main {
     padding: 1rem;
     gap: 1rem;
+  }
+}
+
+/* Light Mode */
+@media (prefers-color-scheme: light) {
+  .app {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  }
+
+  .app-header {
+    background: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .app-header p {
+    color: #555;
+  }
+
+  .app-header code {
+    background: rgba(102, 126, 234, 0.15);
+    color: #5a67d8;
+  }
+
+  .app-footer {
+    background: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .app-footer p {
+    color: #666;
+  }
+
+  .printer-config,
+  .pdf-uploader,
+  .pdf-preview,
+  .print-controls {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .printer-config h3,
+  .pdf-uploader h3,
+  .pdf-preview h3,
+  .print-controls h3 {
+    color: #1a1a2e;
+  }
+
+  .form-group label {
+    color: #555;
+  }
+
+  .form-group input,
+  .form-group select {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1a1a2e;
+  }
+
+  .config-help {
+    background: rgba(102, 126, 234, 0.08);
+    color: #555;
+  }
+
+  .drop-zone {
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .drop-zone:hover,
+  .drop-zone.dragging {
+    background: rgba(102, 126, 234, 0.08);
+  }
+
+  .drop-message {
+    color: #555;
+  }
+
+  .file-name {
+    color: #1a1a2e;
+  }
+
+  .file-size {
+    color: #666;
+  }
+
+  .preview-placeholder p {
+    color: #555;
+  }
+
+  .placeholder-hint {
+    color: #888;
+  }
+
+  .control-section {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .control-section h4 {
+    color: #555;
+  }
+
+  .btn-test,
+  .btn-test-print {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1a1a2e;
+  }
+
+  .btn-test:hover:not(:disabled),
+  .btn-test-print:hover:not(:disabled) {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  .checkbox-label {
+    color: #333;
+  }
+
+  .select-label {
+    color: #333;
+  }
+
+  .select-input {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1a1a2e;
+  }
+
+  .select-input option {
+    background: #fff;
+    color: #1a1a2e;
+  }
+
+  .range-input {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .page-selection {
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  .page-selection p {
+    color: #555;
+  }
+
+  .page-btn {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1a1a2e;
+  }
+
+  .text-input {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1a1a2e;
+  }
+
+  .sdk-status.sdk-loaded {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+
+  .sdk-status.sdk-error {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+
+  .preview-navigation button {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1a1a2e;
+  }
+
+  .preview-navigation button:hover:not(:disabled) {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  .preview-navigation span {
+    color: #1a1a2e;
   }
 }

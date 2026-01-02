@@ -77,7 +77,16 @@ export function PdfPreview({
   }, [file, onPagesLoaded, paperWidth, pdfProcessing]);
 
   if (!file) {
-    return null;
+    return (
+      <div className="pdf-preview pdf-preview-empty">
+        <h3>👁️ Vista Previa</h3>
+        <div className="preview-placeholder">
+          <span className="placeholder-icon">📄</span>
+          <p>Sube un archivo PDF para probar la librería</p>
+          <span className="placeholder-hint">El documento se renderizará y podrás imprimirlo en tu impresora Epson</span>
+        </div>
+      </div>
+    );
   }
 
   return (

@@ -110,8 +110,8 @@ export function PrinterConfig({ onConfigChange }: PrinterConfigProps) {
 
       <div className="config-help">
         <p>
-          <strong>Nota:</strong> La IP debe ser la dirección de tu impresora Epson con ePOS habilitado.
-          El puerto por defecto es 80. El Device ID suele ser "local_printer" o el nombre configurado en la impresora.
+          <strong>💡 Tip:</strong> Configura tu impresora Epson con ePOS habilitado.
+          Puedes usar esta demo para probar la librería antes de integrarla en tu proyecto.
         </p>
       </div>
     </div>

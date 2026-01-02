@@ -35,8 +35,8 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>🖨️ ePOS Print - PDF POC</h1>
-        <p>Imprime archivos PDF en impresoras Epson POS con ePOS Print</p>
+        <h1><span className="header-icon">🖨️</span> <span className="header-title">epson-thermal-printer Demo</span></h1>
+        <p>Ejemplo de uso de la librería <code>@plevands/epson-thermal-printer</code> para imprimir PDFs en impresoras Epson POS</p>
       </header>
 
       <main className="app-main">
@@ -62,10 +62,7 @@ function App() {
 
       <footer className="app-footer">
         <p>
-          POC para impresión de PDF usando{' '}
-          <a href="https://reference.epson-biz.com/modules/ref_epos_sdk_js/index.php" target="_blank" rel="noopener noreferrer">
-            Epson ePOS Print SDK
-          </a>
+          Impresión de PDF usando Epson ePOS Print SDK
         </p>
       </footer>
     </div>

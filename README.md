@@ -115,6 +115,13 @@ const service = new EposPrintService({
 
 // SDK loads automatically from configured path (default: /epos-2.27.0.js)
 const result = await service.printCanvas(canvas);
+
+// With HTTPS (e.g., for printers with TLS enabled)
+const secureService = new EposPrintService({
+  printerIP: '192.168.1.100',
+  useHttps: true,  // Uses port 443 by default when true
+  deviceId: 'local_printer',
+});
 ```
 
 ### Check Printer Connection
@@ -265,9 +272,10 @@ interface PrintOptions {
 ```typescript
 interface EpsonPrinterConfig {
   printerIP: string;     // Required
-  printerPort?: number;  // Default: 80
+  printerPort?: number;  // Default: 80 (or 443 if useHttps is true)
   deviceId?: string;     // Default: 'local_printer'
   timeout?: number;      // Default: 60000ms
+  useHttps?: boolean;    // Use HTTPS instead of HTTP (default: false)
 }
 ```
 

@@ -22,7 +22,6 @@
     "dist/*.js",
     "dist/*.cjs",
     "dist/*.d.ts",
-    "dist/*.map",
     "dist/hooks",
     "dist/lib",
     "dist/types",
